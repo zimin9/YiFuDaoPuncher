@@ -1,6 +1,5 @@
 # 打卡的accessToken
-accessToken = "tW4ATw/+dOkklxxxxxxxx6w9FBQMfnIOuHaXgTixxxxxxxyfpfYcAsuSnOn2chlDaLo8r+hMVBStA1O2JxotiyzEJBbOZOkRaPJo2w+Rs2CGIt3TxV/ZQ2kjxfYjqsaw/M9AiZ2Glqg=="
-# 打卡数据
+accessToken = "tW4ATw/+dxxxxxxxxxxxxxxxxxxxxxxxx"
 punch_in_data = {
     "questionnairePublishEntityId": "1001640744275339000980000000001",
     "answerInfoList": [
@@ -71,26 +70,10 @@ punch_in_data = {
             }
         },
         {
-            "subjectId": "1001640743897278001000000000001",
+            "subjectId": "1001640956029680001500000000001",
             "subjectType": "signleSelect",
             "signleSelect": {
-                "beSelectValue": "flag1640743866638",
-                "fillContent": ""
-            }
-        },
-        {
-            "subjectId": "1001640743922270001000000000001",
-            "subjectType": "signleSelect",
-            "signleSelect": {
-                "beSelectValue": "flag1640743910179",
-                "fillContent": ""
-            }
-        },
-        {
-            "subjectId": "1001640743943034001000000000001",
-            "subjectType": "signleSelect",
-            "signleSelect": {
-                "beSelectValue": "flag1640743930703",
+                "beSelectValue": "flag1640956000651",
                 "fillContent": ""
             }
         }
