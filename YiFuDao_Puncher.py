@@ -4,10 +4,12 @@ import requests
 import json
 from utils.logger import logger
 from default_data import punch_in_data, accessToken
+from utils.dingding_bot import DingDingBot
 
 
 class YiFuDao_Puncher:
     def __init__(self):
+        self.dingding = DingDingBot("xxxxx","xxxxxx")
         self.logger = logger('YiFuDaoPuncher.log')
         self.base_url = "https://yfd.ly-sky.com"
         self.header = {
@@ -17,6 +19,8 @@ class YiFuDao_Puncher:
         self.puncher_status = "💚 打卡脚本初始化中"
         self.logger.info("💚 打卡脚本初始化中")
         self.check_in_index()
+        self.dingding.set_msg("奕辅导自动打卡{}".format(self.puncher_status),self.puncher_status)
+        self.dingding.send()
 
     def check_in_index(self):
         try:
@@ -31,9 +35,11 @@ class YiFuDao_Puncher:
             self.puncher_status = "✔ 已获取健康打卡信息"
             if filling_status is False:
                 self.logger.info("✔ 今天暂未打卡，尝试进行打卡")
+                self.puncher_status = "✔ 今天暂未打卡，尝试进行打卡"
                 self.check_in_detail(str(id))
             else:
                 self.logger.war("❗ 今天已经打卡，脚本自动结束")
+                self.puncher_status = "❗ 今天已经打卡，脚本自动结束"
                 return 0
         except Exception as e:
             self.logger.error("❌ 获取健康打卡信息失败")
@@ -59,9 +65,11 @@ class YiFuDao_Puncher:
             if answer_id_list == question_id_list:
                 punch_in_data["questionnairePublishEntityId"] = str(id)
                 self.logger.info("✔ 预设答案与当前问卷的项相符，本次打卡的问卷id为{}".format(punch_in_data["questionnairePublishEntityId"]))
+                self.puncher_status = "✔ 预设答案与当前问卷的项相符，本次打卡的问卷id为{}".format(punch_in_data["questionnairePublishEntityId"])
                 self.check_in_save()
             else:
                 self.logger.error("❌ 预设答案与当前问卷的项不相符,脚本已结束")
+                self.puncher_status = "❌ 预设答案与当前问卷的项不相符,脚本已结束"
                 return 0
         except Exception as e:
             self.logger.error(e)
@@ -75,8 +83,10 @@ class YiFuDao_Puncher:
             parse_data = json.loads(res.text)
             if parse_data["code"] == 200:
                 self.logger.info("✔ 打卡成功，{}".format(parse_data["message"]))
+                self.puncher_status = "✔ 打卡成功，{}".format(parse_data["message"])
             else:
                 self.logger.error("❌ 打卡失败，{}".format(parse_data["message"]))
+                self.puncher_status = "❌ 打卡失败，{}".format(parse_data["message"])
                 self.logger.error(parse_data)
         except Exception as e:
             self.logger.error(e)
