@@ -9,7 +9,6 @@ from utils.dingding_bot import DingDingBot
 
 class YiFuDao_Puncher:
     def __init__(self):
-        self.dingding = DingDingBot("xxxxx","xxxxxx")
         self.logger = logger('YiFuDaoPuncher.log')
         self.base_url = "https://yfd.ly-sky.com"
         self.header = {
@@ -19,8 +18,6 @@ class YiFuDao_Puncher:
         self.puncher_status = "💚 打卡脚本初始化中"
         self.logger.info("💚 打卡脚本初始化中")
         self.check_in_index()
-        self.dingding.set_msg("奕辅导自动打卡{}".format(self.puncher_status),self.puncher_status)
-        self.dingding.send()
 
     def check_in_index(self):
         try:
@@ -90,8 +87,3 @@ class YiFuDao_Puncher:
                 self.logger.error(parse_data)
         except Exception as e:
             self.logger.error(e)
-
-
-
-
-a = YiFuDao_Puncher()

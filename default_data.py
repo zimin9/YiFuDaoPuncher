@@ -1,5 +1,29 @@
+## 通知推送类型
+## 可选：DingDing / Mail / None
+notify = "DingDing"
+
+## 钉钉机器人配置:
+# access_token
+dingding_access_token = "9b121xxxxxxxxxxxxxx508be80a2097xxxxxxxxx"
+# secret
+dingding_secret = "SEC324xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx260243754ac07708ebb905"
+
+## 邮箱配置：
+# 发信人
+mail_sender = "cxxxxxxxx@163.com"
+# 授权码
+mail_auth_code = "CxxxxxxxxxJO"
+# 收件人
+mail_receiver = ["3xxxxxxx99@qq.com"]
+# smtp地址
+mail_smtp_link = "smtp.163.com"
+# smtp端口
+mail_smtp_port = 465
+
+## 打卡信息配置：
 # 打卡的accessToken
-accessToken = "tW4ATw/+dxxxxxxxxxxxxxxxxxxxxxxxx"
+accessToken = "tW4ATw/+dOxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxmJuyfpfYcAsuSnOn2chlDaLo8r+hMVBStA1O2JxotiyzEJBxxxxxxxxxxxxxxxxxTxV/ZQ2kjxfYjqsaw/M9AiZ2Glqg=="
+# 打卡数据
 punch_in_data = {
     "questionnairePublishEntityId": "1001640744275339000980000000001",
     "answerInfoList": [
