@@ -83,7 +83,7 @@ pip install requests
 使用cron定时执行，下面是每小时（的第一分钟时）执行一次打卡程序的例子：
 
 ```
-1 * * * * python3 /home/xxxx/WoZaiXiaoYuanPuncher/main.py
+1 * * * * python3 /home/xxxx/main.py
 ```
 
 cron的具体使用教程可以参考这篇文章：[Linux crontab 命令 ｜ 菜鸟教程](https://www.runoob.com/linux/linux-comm-crontab.html)
