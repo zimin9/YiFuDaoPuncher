@@ -1,5 +1,5 @@
 ## 通知推送类型
-## 可选：DingDing / Mail / None
+## 可选：DingDing / Mail / PushPlus / None
 notify = "DingDing"
 
 ## 钉钉机器人配置:
@@ -19,6 +19,10 @@ mail_receiver = ["3xxxxxxx99@qq.com"]
 mail_smtp_link = "smtp.163.com"
 # smtp端口
 mail_smtp_port = 465
+
+# PushPlus配置：
+# token
+pushplus_token = "2exxxxxxxxxxxxxxxxxxxx0fcb0cbed3"
 
 ## 打卡信息配置：
 # 打卡的accessToken

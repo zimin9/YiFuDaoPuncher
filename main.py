@@ -2,6 +2,7 @@
 from YiFuDao_Puncher import YiFuDao_Puncher
 from default_data import *
 from utils.dingding_bot import DingDingBot
+from utils.pushplus import PushPlus
 from utils.smtp_sender import ErrorEmail
 from utils.time_util import datetime_2string
 
@@ -23,3 +24,5 @@ if __name__ == '__main__':
         ee = ErrorEmail(mail_sender, mail_auth_code, mail_receiver)
         msg = ee.theme_content(title,text)
         ee.send_message(mail_smtp_link, mail_smtp_port, msg)
+    elif notify == "PushPlus":
+        notifier = PushPlus.send(pushplus_token, title, text, "markdown")

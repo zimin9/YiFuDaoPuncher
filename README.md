@@ -38,7 +38,7 @@ punch_in_data = {
 notify = "DingDing"
 ```
 
-notify目前可以填入DingDing / Mail / None，分别对应钉钉机器人推送、邮件推送与无推送。
+notify目前可以填入DingDing / Mail / PushPlus / None，分别对应钉钉机器人推送、邮件推送、PushPlus推送与无推送。
 
 设置钉钉机器人时，需要把钉钉机器人的access_token与secret填入下方对应的变量：
 
@@ -64,6 +64,12 @@ mail_receiver = ["3xxxxxxx99@qq.com"]
 mail_smtp_link = "smtp.163.com"
 # smtp端口
 mail_smtp_port = 465
+```
+
+```python
+# PushPlus配置：
+# token
+pushplus_token = "2exxxxxxxxxxxxxxxxxxxx0fcb0cbed3"
 ```
 
 
