@@ -8,13 +8,13 @@ https://github.com/Chorer/YiFuDaoChecker-cloudFunction
 
 ### 📌 快速上手
 
-##### 1、使用抓包软件获取自己奕辅导小程序账号的access_token
+#### 1、使用抓包软件获取自己奕辅导小程序账号的access_token
 
 
 
-##### 2、打开 `default_data.py`，填写相关配置信息
+#### 2、打开 `default_data.py`，填写相关配置信息
 
-2.1 配置打卡信息：
+**2.1 配置打卡信息：**
 
 ```python
 # 打卡的accessToken
@@ -28,11 +28,17 @@ punch_in_data = {
 
 将第一步抓取到的access_token粘贴到第一个变量中。
 
-打卡数据根据需要自行修改。**注：不同学校的问卷可能不同，需要自己抓包分析。**
+💚**2022年1月10日更新：**
+
+打卡信息现在可以使用 `punch_in_data_generator.py` 脚本进行抓取。使用方法：
+
+1. 现在手机上正常打卡
+2. 使用 python 运行 `punch_in_data_generator.py` 脚本
+3. 将生成的 `punch_in_data.json` 文件中的数据全部复制到 `default_data.py` 中对应的 `punch_in_data` 变量
 
 
 
-2.2 配置通知提醒
+**2.2 配置通知提醒**
 
 ```python
 notify = "DingDing"
@@ -66,6 +72,8 @@ mail_smtp_link = "smtp.163.com"
 mail_smtp_port = 465
 ```
 
+以下是PushPlus推送的设置：
+
 ```python
 # PushPlus配置：
 # token
@@ -74,7 +82,7 @@ pushplus_token = "2exxxxxxxxxxxxxxxxxxxx0fcb0cbed3"
 
 
 
-##### 3、配置python运行环境
+#### 3、配置python运行环境
 
 ```cmd
 pip install requests
@@ -82,7 +90,7 @@ pip install requests
 
 
 
-##### 4、配置定时执行脚本
+#### 4、配置定时执行脚本
 
 **💻 Linux系列系统**
 
