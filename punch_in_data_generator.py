@@ -38,7 +38,7 @@ class punch_in_data_generator:
 
             str_post_data = {}
             str_post_data["questionnairePublishEntityId"] = qpe_id
-            str_post_data["answerInfoList"] = str(data_list).replace("null","None")
+            str_post_data["answerInfoList"] = eval(str(data_list).replace("null","None"))
 
             f2 = open('punch_in_data.json', 'w')
             f2.write(str(str_post_data))
