@@ -34,8 +34,14 @@ class punch_in_data_generator:
             res = requests.get(self.base_url+url,headers=self.header)
             parse_data = json.loads(res.text)
             data_list = dict.get(dict.get(parse_data, "data"),"answerInfoList")
+            qpe_id = dict.get(dict.get(parse_data,"data"),"questionnairePublishEntityId")
+
+            str_post_data = {}
+            str_post_data["questionnairePublishEntityId"] = qpe_id
+            str_post_data["answerInfoList"] = eval(str(data_list).replace("null","None"))
+
             f2 = open('punch_in_data.json', 'w')
-            f2.write(json.dumps(data_list))
+            f2.write(str(str_post_data))
             f2.close()
         except Exception as e:
             print(e)
