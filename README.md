@@ -4,6 +4,10 @@
 
 https://github.com/Chorer/YiFuDaoChecker-cloudFunction
 
+基于圈X，且功能更多的脚本：
+
+https://github.com/uiolee/NanFuDao
+
 
 
 ### 📌 快速上手
