@@ -36,9 +36,14 @@ class punch_in_data_generator:
             data_list = dict.get(dict.get(parse_data, "data"),"answerInfoList")
             qpe_id = dict.get(dict.get(parse_data,"data"),"questionnairePublishEntityId")
 
-            str_post_data = {}
-            str_post_data["questionnairePublishEntityId"] = qpe_id
-            str_post_data["answerInfoList"] = eval(str(data_list).replace("null","None"))
+            # str_post_data = {}
+            # str_post_data["questionnairePublishEntityId"] = qpe_id
+            # str_post_data["answerInfoList"] = eval(str(data_list).replace("null","None"))
+            dic_post_data = {}
+            dic_post_data["questionnairePublishEntityId"] = qpe_id
+            dic_post_data["answerInfoList"] = data_list
+            json_post_data = json.dumps(dic_post_data, ensure_ascii=False, indent=4)
+            str_post_data = str(json_post_data).replace("null", "None")
 
             f2 = open('punch_in_data.json', 'w')
             f2.write(str(str_post_data))
