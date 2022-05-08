@@ -37,7 +37,7 @@ class YiFuDao_Puncher:
                     self.puncher_status = "❗ 还未到打卡时间，脚本自动结束"
                 else:
                     self.logger.error("❌ 获取问卷失败，请稍后重试")
-                    elf.logger.error(str(parse_data))
+                    self.logger.error(str(parse_data))
                     self.puncher_status = "❌ 获取问卷失败，请稍后重试"
                 return 0
             if filling_status is False:
