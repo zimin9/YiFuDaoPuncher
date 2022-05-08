@@ -21,7 +21,7 @@ class punch_in_data_generator:
             detail = dict.get(parse_data,"data")
             id = dict.get(detail,"questionnairePublishEntityId")        # 表单ID，每日不同
             filling_status = dict.get(detail, "hadFill")  # 填写状态
-            if filling_status is False:
+            if filling_status is False or filling_status is None:
                 print("请在手机上进行打卡后再运行此脚本")
             else:
                 self.check_in_detail(str(id))
