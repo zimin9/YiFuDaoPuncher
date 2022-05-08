@@ -30,6 +30,16 @@ class YiFuDao_Puncher:
             self.logger.info("✔ 已获取健康打卡信息")
             self.logger.info(str(detail))
             self.puncher_status = "✔ 已获取健康打卡信息"
+            if id is None:
+                start_time = dict.get(detail, "fillStartTime")  # 获取问卷开始时间
+                if start_time is not None:
+                    self.logger.war("❗ 还未到打卡时间，脚本自动结束")
+                    self.puncher_status = "❗ 还未到打卡时间，脚本自动结束"
+                else:
+                    self.logger.error("❌ 获取问卷失败，请稍后重试")
+                    elf.logger.error(str(parse_data))
+                    self.puncher_status = "❌ 获取问卷失败，请稍后重试"
+                return 0
             if filling_status is False:
                 self.logger.info("✔ 今天暂未打卡，尝试进行打卡")
                 self.puncher_status = "✔ 今天暂未打卡，尝试进行打卡"
