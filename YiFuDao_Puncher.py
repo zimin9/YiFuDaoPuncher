@@ -22,16 +22,22 @@ class YiFuDao_Puncher:
     def check_in_index(self):
         try:
             url = "/ly-pd-mb/form/api/healthCheckIn/client/stu/index"
-            res = requests.get(self.base_url+url, headers=self.header)
-            parse_data = json.loads(res.text)
-            detail = dict.get(parse_data,"data")
-            id = dict.get(detail,"questionnairePublishEntityId")        # 表单ID，每日不同
-            filling_status = dict.get(detail, "hadFill")                # 填写状态
+            id=None
+            retry=3
+            while id is None and retry>=0:
+                retry-=1
+                res = requests.get(self.base_url+url, headers=self.header)
+                parse_data = json.loads(res.text)
+                detail = dict.get(parse_data,"data")
+                id = dict.get(detail,"questionnairePublishEntityId")        # 表单ID，每日不同
+                filling_status = dict.get(detail, "hadFill")                # 填写状态
+                start_time = dict.get(detail, "fillStartTime")  # 获取问卷开始时间
+                if start_time:
+                    break
             self.logger.info("✔ 已获取健康打卡信息")
             self.logger.info(str(detail))
             self.puncher_status = "✔ 已获取健康打卡信息"
             if id is None:
-                start_time = dict.get(detail, "fillStartTime")  # 获取问卷开始时间
                 if start_time is not None:
                     self.logger.war("❗ 还未到打卡时间，脚本自动结束")
                     self.puncher_status = "❗ 还未到打卡时间，脚本自动结束"
